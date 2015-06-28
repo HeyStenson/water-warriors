@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" ng-app="waterWorksApp">
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,65 +8,189 @@
     <title>Water Warriors</title>
 
     <!-- Bootstrap -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
+</head>
+<body ng-controller="waterWarriorsController">
 
-    <nav class="navbar navbar-default navbar-static-top">
-      <div class="container">
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="index.html">Water Warriors</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html">Water Warriors</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Daily Summary</a></li>
-            <li><a href="leadership.html">Leadership Board</a></li>
-            <li><a href="activity.html">+ Add Activity</a></li>
-          </ul>
+            <ul class="nav navbar-nav">
+                <li><a id ="indexPage" href ng-click="setIndexPage($event)">Daily Summary</a></li>
+                <li><a id ="leadershipPage" href ng-click="setLeadershipPage()">Leadership Board</a></li>
+                <li><a id ="activityPage" href ng-click="setActivityPage()">+ Add Activity</a></li>
+            </ul>
         </div><!--/.nav-collapse -->
-      </div>
-    </nav>
+    </div>
+</nav>
+
+<div id="index-content" ng-include="'index'" style="display: block">
+
+</div>
+
+
+<div id="leadership-content" ng-include="'leadership'" style="display: none">
+
+</div>
+
+
+<div id="activity-content" ng-include="'activities'" style="display: none">
+
+</div>
+
+<!-- script for  INDEX -->
+<script type="text/ng-template" id="index">
 
     <section>
-      <div class="container">
-        <div class="row">
-          <h1>Daily Summary</h1>
+        <div class="container">
+            <div class="row">
+                <h1>Daily Summary</h1>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <h3>10.5 gallons</h3>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Activity Breakdown</h2>
+                <ul class="gallon">
+                    <li><img src="images/shower.svg" class="activity-icon" alt="Shower"></span> 10 gallons</li>
+                    <li><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> 5 gallons</li>
+                    <li><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> 2 gallons</li>
+                    <li><span class="glyphicon glyphicon-asterisk" aria-hidden="true"></span> 7 gallons</li>
+                </ul>
+            </div>
         </div>
-        <div class="row">
-          <div class="col-md-8">
-            <h3>10.5 gallons</h3>
-          </div>
-        </div>
-        <div class="row">
-          <h2>Activity Breakdown</h2>
-          <ul class="gallon-items">
-            <li><img src="assets/images/shower.svg" class="activity-icon" alt="Shower"></span> 10 gallons</li>
-            <li><img src="assets/images/toilet.svg" alt="Toilet Flush"> 5 gallons</li>
-            <li><img src="assets/images/hand.svg" alt="Handwashing"> 2 gallons</li>
-            <li><img src="assets/images/toothbrush.svg" alt="Teeth brushing"> 7 gallons</li>
-          </ul>
-        </div>
-      </div>
     </section>
+</script>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
+
+<!--
+script for leadership
+-->
+<script type="text/ng-template" id="leadership">
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h1>Leadership Board</h1>
+                </div>
+            </div>
+            <div class="row">
+                <ol class="leadership-items">
+                    <li>
+                        <img src="http://placekitten.com/g/50/50">
+                        Juanita Lee
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                <span class="sr-only">60% Complete</span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <img src="http://placekitten.com/g/50/50">
+                        Heather Stenson
+                        <canvas class="water-data"></canvas>
+                    </li>
+                    <li>
+                        <img src="http://placekitten.com/g/50/50">
+                        Michelle
+                        <canvas class="water-data"></canvas>
+                    </li>
+                    <li>
+                        <img src="http://placekitten.com/g/50/50">
+                        Stephanie
+                        <canvas class="water-data"></canvas>
+                    </li>
+                    <li>
+                        <img src="http://placekitten.com/g/50/50">
+                        Spongebob
+                        <canvas class="water-data"></canvas>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </section>
+</script>
+
+<!--script for activity -->
+<script type="text/ng-template" id="activities">
+    <section>
+        <div class="container">
+            <div class="row container">
+                <h1>Your water activity for [DATE]</h1>
+            </div>
+            <div class="row container">
+                <h3>Activity</h3>
+                <ul class="activity-items">
+                    <li>
+                        <a href="#">
+                            <img src="images/shower.svg" class="activity-icon" alt="Shower">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/toilet.svg" alt="Toilet Flush">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/hand.svg" alt="Handwashing">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="images/toothbrush.svg" alt="Teeth brushing">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="row container">
+                <h3>Use</h3>
+                <label>Shower Length:</label>
+                <select class="form-control">
+                    <option>5 minutes</option>
+                    <option>10 minutes</option>
+                    <option>15 minutes</option>
+                    <option>20 minutes</option>
+                    <option>25 minutes</option>
+                    <option>30 minutes</option>
+                </select>
+            </div>
+            <div class="row container">
+                <button type="button" class="btn btn-primary">Add Activity</button>
+            </div>
+        </div>
+    </section>
+</script>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.7/firebase.js"></script>
+<script src="water-warriors.js"></script>
+</body>
 </html>
