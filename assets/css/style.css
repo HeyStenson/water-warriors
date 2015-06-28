@@ -23,7 +23,15 @@ li span {
   float: right;
 }
 
-.activity-items {
+.gallon-items img {
+  background-color: blue;
+  max-height: 50px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.activity-items,
+.gallon-items {
   padding-left: 0;
 }
 
@@ -36,7 +44,6 @@ li span {
   margin-right: 10px;
   margin-bottom: 15px;
   max-height: 75px;
-
 }
 
 .activity-items img:hover {
